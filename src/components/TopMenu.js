@@ -9,22 +9,22 @@ function TopMenu() {
 
                 <ul>
                     <li>
-                        <NavLink to="/HomePage" exact activeClassName="active-link">Home</NavLink>
+                        <NavLink to="/Home" exact activeClassName="active-link">Home</NavLink>
                     </li>
 
                     <li>
-                        <NavLink to="/Page1" exact activeClassName="active-link">Page1</NavLink>
+                        <NavLink to="/Popular" exact activeClassName="active-link">Popular</NavLink>
                     </li>
 
                     <li>
-                        <NavLink to="/Page2" exact activeClassName="active-link">Page2</NavLink>
+                        <NavLink to="/Veggie" exact activeClassName="active-link">Veggie</NavLink>
                     </li>
 
                     <li>
-                        <NavLink to="/Page3" exact activeClassName="active-link">Page3</NavLink>
+                        <NavLink to="/AllRecipes" exact activeClassName="active-link">AllRecipes</NavLink>
                     </li>
                     <li>
-                        <NavLink to="/Page4" exact activeClassName="active-link">Page4</NavLink>
+                        <NavLink to="/Profile" exact activeClassName="active-link">Profiel</NavLink>
                     </li>
                 </ul>
             </div>

@@ -1,25 +1,26 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 
 function Profile() {
-
-    useEffect(() => {
-        const token = localStorage.getItem('token');
-
-        async function getProfileData() {
-            try {
-
-            } catch (e) {
-                console.error(e)
-            }
-        }
-    }, [])
-
     return (
-        <div>
-            <h1>Profiel pagina</h1>
-            <p>Hoi [username]!</p>
-        </div>
+        <>
+            <header>
+            </header>
+
+            <main>
+                <h3>Welcome to your personal profile page</h3>
+                <section>
+                    <h6>Your personal data</h6>
+                    <p>Username:</p>
+                    <p>Email:</p>
+                </section>
+                <section>
+                    <h6>Personal profile content</h6>
+                    <p>Your personal and private information</p>
+                </section>
+            </main>
+
+        </>
     );
 }
 
-export default Profile
+export default Profile;

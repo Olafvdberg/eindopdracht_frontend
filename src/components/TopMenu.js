@@ -1,29 +1,29 @@
 import React from 'react';
 import { NavLink } from "react-router-dom";
+import styles from "../styles/TopMenu.module.css"
 
 function TopMenu() {
     return (
         <nav>
             <div className="nav-container">
-                <h4>De Foodapp</h4>
 
-                <ul>
-                    <li>
-                        <NavLink to="/Home" exact activeClassName="active-link">Home</NavLink>
+                <ul className={styles["topmenu"]}>
+                    <li className={styles["links"]}>
+                        <NavLink to="/" exact activeClassName="active-link">Home</NavLink>
                     </li>
 
-                    <li>
+                    <li className={styles["links"]}>
                         <NavLink to="/Popular" exact activeClassName="active-link">Popular</NavLink>
                     </li>
 
-                    <li>
-                        <NavLink to="/Veggie" exact activeClassName="active-link">Veggie</NavLink>
+                    <li className={styles["links"]}>
+                        <NavLink to="/cuisine" exact activeClassName="active-link">Cuisine</NavLink>
                     </li>
 
-                    <li>
+                    <li className={styles["links"]}>
                         <NavLink to="/AllRecipes" exact activeClassName="active-link">AllRecipes</NavLink>
                     </li>
-                    <li>
+                    <li className={styles["links"]}>
                         <NavLink to="/Profile" exact activeClassName="active-link">Profiel</NavLink>
                     </li>
                 </ul>

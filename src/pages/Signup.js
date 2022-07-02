@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import styles from "../styles/Signup.module.css"
 
 import axios from "axios";
 import {useHistory} from "react-router-dom";
@@ -37,7 +38,7 @@ function Signup() {
         <>
             <div/>
 
-            <form onSubmit={SignUpUser}>
+            <form onSubmit={SignUpUser} className={styles["layout"]}>
                 <label htmlFor="email">
                     Email:
                     <input
@@ -48,7 +49,7 @@ function Signup() {
                         placeholder="Fill in your email"
                     />
                 </label>
-                <label htmlFor="username">
+                <label htmlFor="username" className={styles["label"]}>
                     Username:
                     <input
                         type="text"
@@ -57,10 +58,10 @@ function Signup() {
                         value={userName}
                         placeholder="Fill in your username"
                     />
-                    {userName.length < 6 && <p>Your username isn't long enough</p>}
-                    {userName.length >= 6 && <p>Your username is long enough</p>}
+                    {userName.length < 6 && <p className={styles["error"]}>Your username isn't long enough</p>}
+                    {userName.length >= 6 && <p className={styles["good"]}>Your username is long enough</p>}
                 </label>
-                <label htmlFor="password">
+                <label htmlFor="password" className={styles["label"]}>
                     Password:
                     <input
                         type="password"
@@ -69,12 +70,12 @@ function Signup() {
                         value={password}
                         placeholder="Your password"
                     />
-                    {password.length < 6 && <p>Your password isn't long enough</p>}
-                    {password.length >= 6 && <p>Your password is long enough</p>}
+                    {password.length < 6 && <p className={styles["error"]}>Your password isn't long enough</p>}
+                    {password.length >= 6 && <p className={styles["good"]}>Your password is long enough</p>}
 
                 </label>
 
-                <label htmlFor="role">
+                <label htmlFor="role" className={styles["label"]}>
                     Role:
                     <input
                         type="text"
@@ -85,7 +86,7 @@ function Signup() {
                     />
                 </label>
 
-                <button type="submit">Register</button>
+                <button type="submit" className={styles["button"]}>Register</button>
             </form>
 
 

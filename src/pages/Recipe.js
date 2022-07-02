@@ -1,6 +1,7 @@
 import {useEffect, useState} from "react";
 import styled from "styled-components";
 import {useParams} from "react-router-dom";
+import styles from "../styles/Recipe.module.css";
 
 import React from "react";
 
@@ -22,7 +23,7 @@ function Recipe() {
 
     return <DetailWrapper>
         <div>
-            <h2>{details.title}</h2>
+            <h2 className={styles["h2-recipe"]}>{details.title}</h2>
             <img src={details.image} alt="" />
         </div>
         <Info>
@@ -41,9 +42,9 @@ function Recipe() {
             )}
 
             {activeTab === 'ingredients' && (
-                <ul>
+                <ul className={styles["ul-recipe"]}>
                     {details.extendedIngredients.map((ingredient) => (
-                        <li key={ingredient.id}>{ingredient.original}</li>
+                        <li className={styles["li-recipe"]} key={ingredient.id}>{ingredient.original}</li>
                     ))}
                 </ul>
             )
@@ -59,16 +60,6 @@ const DetailWrapper = styled.div`
   .active{
     background: linear-gradient(35deg, #494949, #313131);
     color: white;
-  }
-  h2{
-    margin-bottom: 2rem;
-  }
-  li{
-    front-size: 1.2rem;
-    line-heigt: 2.5rem;
-  }
-  ul {
-    margin-top: 2rem;
   }
 `;
 

@@ -16,7 +16,6 @@ import QuestionRecipe from "./pages/QuestionRecipe";
 import FridgeRecipe from "./pages/FridgeRecipe";
 import Cuisine from "./pages/Cuisine";
 
-
 function App() {
 
     const { isAuth } = useContext(AuthContext);

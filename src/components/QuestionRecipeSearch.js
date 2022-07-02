@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import styles from '../styles/QuestionRecipeSearch.module.css'
+import styled from "styled-components";
 
 function QuestionRecipeSearch({setQuestionHandler}) {
 
@@ -11,23 +12,20 @@ function QuestionRecipeSearch({setQuestionHandler}) {
     };
 
     return (
-        <form onSubmit={submitHandler}>
-            <input
-
+        <FormStyle onSubmit={submitHandler}>
+            <input className={styles["input-question"]}
                 type="text"
                 name="search"
                 value={question}
                 onChange={(e) => setQuestion(e.target.value)}
                 placeholder="Ik heb zin in..."
             />
-
-            <button
-                className={styles["button-design"]}
-                type="submit">
-                Search
-            </button>
-        </form>
+        </FormStyle>
     )
 }
+
+const FormStyle = styled.form`
+  margin: 0rem 20rem;
+  `
 
 export default QuestionRecipeSearch

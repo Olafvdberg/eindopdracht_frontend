@@ -35,44 +35,44 @@ function LoginPage() {
 
         <>
 
-            <form onSubmit={handleSubmit} className={styles.layout}>
+            <form onSubmit={handleSubmit} className={styles["layout"]}>
 
-                <label htmlFor="login-username" className={styles.form}>
+                <label htmlFor="login-username" className={styles["label"]}>
                     Username:
                     <input
-                        className={styles.form}
+                        className={styles["label"]}
                         type="text"
                         id="login-username"
                         onChange={(e) => setUsername(e.target.value)}
                         value={userName}
                         placeholder="Fill in your username"
                     />
-                    {userName.length < 6 && <p className={styles["error-message"]}>Your username isn't long enough</p>}
-                    {userName.length >= 6 && <p className={styles["good-message"]}>Your username is long enough</p>}
+                    {userName.length < 6 && <p className={styles["error"]}>Your username isn't long enough</p>}
+                    {userName.length >= 6 && <p className={styles["good"]}>Your username is long enough</p>}
                 </label>
 
 
-                <label htmlFor="login-password" className={styles.form}>
+                <label htmlFor="login-password" className={styles["label"]}>
                     Password:
                     <input
-                        className={styles.form}
+                        className={styles["label"]}
                         type="password"
                         id="login-password"
                         onChange={(e) => setPassword(e.target.value)}
                         value={password}
                         placeholder="Fill in your password"
                     />
-                    {password.length < 6 && <p className={styles["error-message"]}>Your password isn't long enough</p>}
-                    {password.length >= 6 && <p className={styles["good-message"]}>Your password is long enough</p>}
+                    {password.length < 6 && <p className={styles["error"]}>Your password isn't long enough</p>}
+                    {password.length >= 6 && <p className={styles["good"]}>Your password is long enough</p>}
                 </label>
 
 
 
 
-                <button type="submit" className={styles["button-design"]}>Login</button>
+                <button type="submit" className={styles["button"]}>Login</button>
             </form>
 
-            <p>No account yet? <Link to="/signup">Signup</Link> first.</p>
+            <p>Heeft u geen account? <Link to="/signup">Signup</Link> Dan.</p>
 
         </>
 

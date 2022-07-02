@@ -4,6 +4,7 @@ import {Link, useParams} from "react-router-dom";
 import styled from "styled-components"
 import Search from "../components/Search";
 import {Splide, SplideSlide} from "@splidejs/react-splide";
+import styles from "../styles/Searched.module.css";
 
 function Searched() {
     const [searchedRecipes, setSearchedRecipes] = useState([]);
@@ -39,8 +40,9 @@ function Searched() {
                 <SplideSlide key={item.id}>
                 <Card key={item.id}>
                     <Link to={'/recipe/' + item.id}>
-                    <img src={item.image} alt="" />
-                    <h4>{item.title}</h4>
+                        <p className={styles["p-searched"]}>{item.title}</p>
+                        <img className={styles["img-searched"]} src={item.image} alt="" />
+
                     </Link>
                 </Card>
                 </SplideSlide>
@@ -67,22 +69,6 @@ const Card = styled.div`
   border-radius: 2rem;
   overflow: hidden;
   position: relative;
-  
-  img {
-    border-radius: 2rem;
-    position: absolute;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  a {
-    text-decoration: none;
-  }
-  h4 {
-    text-align: center;
-    padding: 1rem;
-  }
 `;
 
 export default Searched;

@@ -3,6 +3,9 @@ import axios from "axios";
 import styles from '../styles/QuestionRecipe.module.css';
 import TopMenu from "../components/TopMenu";
 import QuestionRecipeSearch from "../components/QuestionRecipeSearch";
+import {Splide, SplideSlide} from "@splidejs/react-splide";
+import {Link} from "react-router-dom";
+import styled from "styled-components";
 
 function QuestionRecipe() {
     const [questionData, setQuestionData] = useState(null);
@@ -26,47 +29,46 @@ function QuestionRecipe() {
 
     return (
         <>
-            <header>
-                <TopMenu/>
-            </header>
 
             <main>
-                <section className={styles["mood-names"]}>
-                    <p className={styles.region}>What are you in the mood for?
-                        Choose from: dessert, bread, breakfast, soup beverage, sauce, marinade, fingerfood snack, drink.
-                        And get a recipe according to your mood for food</p>
+                <section>
+                    <p>Waar heeft u zin in? Kies uit:</p>
                 </section>
-                <section className={styles["mood-names"]}>
+                <section>
+                    <p>bread, breakfast, dessert, drink, fingerfood snack, marinade, sauce, soup beverage</p>
+                </section>
+                <section>
                     <QuestionRecipeSearch setQuestionHandler={setQuestion}/>
                 </section>
-                {questionData && <>
-                    <section className={styles["choose-mood"]}>{questionData.results.map((questionList) => {
-                        return (<article key={questionList.id}>
-                                <p>{questionList.title}</p>
-                                <img src={questionList.image}/>
-                                <section>Ready in: {questionList.readyInMinutes} minutes</section>
-                                <section
-                                    className={styles["ingredients"]}>{questionList.analyzedInstructions[0].steps[0].ingredients.map((ingredients) => {
-                                    return (
-                                        <article key={ingredients.name}>
-                                            <div>{ingredients.name}</div>
-                                        </article>
-                                    );
-                                })}
-                                </section>
-                                <section className={styles["instructions"]}>{questionList.analyzedInstructions[0].steps.map((instructions) => {
 
-                                    return (
-                                        <article key={instructions.step}>
-                                            <div>{instructions.step}</div>
-                                        </article>
-                                    );
+                {questionData && <>
+                    <div>
+                        <Wrapper>
+                            <h3>Hier zijn de gevonden resultaten.</h3>
+                            <Splide options={{
+                                perPage: 4,
+                                arrows: false,
+                                pagination: false,
+                                drag: 'free',
+                                gap: "5rem"
+                            }}
+                            >
+                                {questionData.results.map((questionlist) => {
+                                    return(
+                                        <SplideSlide key={questionlist.id}>
+                                            <Card key={questionlist.id}>
+                                                <Link to={'/recipe/' + questionlist.id}>
+                                                    <p className={styles["p-question"]}>{questionlist.title}</p>
+                                                    <img className={styles["img-question"]} src={questionlist.image} alt="" />
+
+                                                </Link>
+                                            </Card>
+                                        </SplideSlide>
+                                    )
                                 })}
-                                </section>
-                            </article>
-                        );
-                    })}
-                    </section>
+                            </Splide>
+                        </Wrapper>
+                    </div>
                 </>
                 }
             </main>
@@ -74,5 +76,22 @@ function QuestionRecipe() {
         </>
     );
 }
+
+const Grid = styled.div`
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(20rem, 1rf));
+grid-gap: 3rem;
+`;
+
+const Wrapper = styled.div`
+  margin: 4rem 0rem;
+`
+
+const Card = styled.div`
+  min-height: 25rem;
+  border-radius: 2rem;
+  overflow: hidden;
+  position: relative;
+`;
 
 export default QuestionRecipe;

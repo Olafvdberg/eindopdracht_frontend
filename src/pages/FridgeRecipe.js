@@ -3,6 +3,9 @@ import axios from "axios";
 import styles from '../styles/FridgeRecipe.module.css';
 import FridgeRecipeSearch from "../components/FridgeRecipeSearch.js";
 import TopMenu from "../components/TopMenu";
+import {Splide, SplideSlide} from "@splidejs/react-splide";
+import {Link} from "react-router-dom";
+import styled from "styled-components";
 
 function FridgePage() {
     const [frigdeData, setFridgeData] = useState(null);
@@ -35,16 +38,12 @@ function FridgePage() {
 
     return (
         <>
-            <header>
-                <TopMenu/>
-            </header>
 
             <main>
-                <section className={styles["kitchen-names"]}>
-                    <p className={styles.region}>No clue what to make with the ingredients that are left in your fridge?
-                        Fill them in and find out what delicious recipes you still can make, or have to buy in order to make that tasty meal.</p>
+                <section>
+                    <p>Wat heeft u nog over in de koelkast?</p>
                 </section>
-                <section className={styles["kitchen-names"]}>
+                <section>
                     <FridgeRecipeSearch setFrigdeHandler={setFridge}/>
                 </section>
 
@@ -54,32 +53,33 @@ function FridgePage() {
 
 
                 {frigdeData && <>
-                    <section className={styles.fridge}>{frigdeData.map((fridgeList) => {
-                        return (<article key={fridgeList.id}>
-                                <p>{fridgeList.title}</p>
-                                <img src={fridgeList.image}/>
-                                <section className={styles["ingredients-titel"]}><strong>Ingredients in your fridge:</strong></section>
-                                <section className={styles["ingredients"]}>{fridgeList.usedIngredients.map((ingredients) => {
-                                    return (
-                                        <article key={fridge.name}>
-                                            <div>{fridge.name}</div>
-                                        </article>
-                                    );
+                    <div>
+                        <Wrapper>
+                            <h3>Hier zijn de gevonden resultaten.</h3>
+                            <Splide options={{
+                                perPage: 4,
+                                arrows: false,
+                                pagination: false,
+                                drag: 'free',
+                                gap: "5rem"
+                            }}
+                            >
+                                {frigdeData.map((fridgelist) => {
+                                    return(
+                                        <SplideSlide key={fridgelist.id}>
+                                            <Card key={fridgelist.id}>
+                                                <Link to={'/recipe/' + fridgelist.id}>
+                                                    <p className={styles["p-fridge"]}>{fridgelist.title}</p>
+                                                    <img className={styles["img-fridge"]} src={fridgelist.image} alt="" />
+
+                                                </Link>
+                                            </Card>
+                                        </SplideSlide>
+                                    )
                                 })}
-                                </section>
-                                <section className={styles["ingredients-titel"]}><strong>Ingredients you need to buy:</strong></section>
-                                <section className={styles["ingredients"]}>{fridgeList.missedIngredients.map((ingredients) => {
-                                    return (
-                                        <article key={fridge.name}>
-                                            <div>{fridge.name}</div>
-                                        </article>
-                                    );
-                                })}
-                                </section>
-                            </article>
-                        );
-                    })}
-                    </section>
+                            </Splide>
+                        </Wrapper>
+                    </div>
                 </>
                 }
             </main>
@@ -89,5 +89,22 @@ function FridgePage() {
         </>
     );
 }
+
+const Grid = styled.div`
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(20rem, 1rf));
+grid-gap: 3rem;
+`;
+
+const Wrapper = styled.div`
+  margin: 4rem 0rem;
+`
+
+const Card = styled.div`
+  min-height: 25rem;
+  border-radius: 2rem;
+  overflow: hidden;
+  position: relative;
+`;
 
 export default FridgePage;

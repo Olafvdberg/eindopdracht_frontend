@@ -3,6 +3,7 @@ import styled from "styled-components";
 import {Splide, SplideSlide} from '@splidejs/react-splide';
 import "@splidejs/splide/dist/css/splide.min.css";
 import {Link} from "react-router-dom";
+import styles from "../styles/Popular.module.css"
 
 
 function Popular() {
@@ -29,7 +30,7 @@ function Popular() {
     return (
         <div>
             <Wrapper>
-                <h3>Popular Picks</h3>
+                <h3>Populaire keuzes</h3>
                 <Splide options={{
                     perPage: 4,
                     arrows: false,
@@ -43,8 +44,8 @@ function Popular() {
                             <SplideSlide key={recipe.id}>
                                 <Card>
                                     <Link to={'/recipe/' + recipe.id}>
-                                    <p>{recipe.title}</p>
-                                    <img src={recipe.image} alt={recipe.title}/>
+                                    <p className={styles["p-popular"]}>{recipe.title}</p>
+                                    <img className={styles["img-popular"]} src={recipe.image} alt={recipe.title}/>
                                     <Gradient />
                                     </Link>
                                 </Card>
@@ -66,31 +67,6 @@ const Card = styled.div`
       border-radius: 2rem;
       overflow: hidden;
       position: relative;
-      
-      img{
-        border-radius: 2rem;
-        position: absolute;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-      p {
-        position: absolute;
-        z-index: 10;
-        left: 50%;
-        bottom: 0%;
-        transform: translate(-50%, 0%);
-        color: white;
-        width: 100%;
-        text-align: center;
-        front-weight: 600;
-        front-size: 1rem;
-        height: 40%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
     `;
 
 const Gradient = styled.div `

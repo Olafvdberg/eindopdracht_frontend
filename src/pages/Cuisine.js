@@ -2,10 +2,8 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import styles from '../styles/Cuisine.module.css';
 import CousineSearch from "../components/CuisineSearch";
-import Search from "../components/Search";
 import {Splide, SplideSlide} from "@splidejs/react-splide";
 import {Link, useParams} from "react-router-dom";
-import CuisineSearch from "../components/CuisineSearch";
 import styled from "styled-components";
 
 function ChooseCuisine() {

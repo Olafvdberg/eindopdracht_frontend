@@ -10,15 +10,19 @@ import styled from "styled-components";
 function QuestionRecipe() {
     const [questionData, setQuestionData] = useState(null);
     const [question, setQuestion] = useState('');
+    const [error, toggleError] = useState(false);
 
     useEffect(() => {
         async function getQuestionData() {
+            toggleError(false);
+
             try {
                 const result = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?&type=${question}&addRecipeInformation=true&apiKey=58d9ee76861142d19ae15d8da98f6abf`);
                 console.log(result.data);
                 setQuestionData(result.data);
             } catch (e) {
                 console.error(e);
+                toggleError(true);
             }
         }
 
@@ -40,6 +44,8 @@ function QuestionRecipe() {
                 <section>
                     <QuestionRecipeSearch setQuestionHandler={setQuestion}/>
                 </section>
+
+                {error && <><div><p>Geen recepten gevonden. Probeer het opnieuw.</p></div></> }
 
                 {questionData && <>
                     <div>

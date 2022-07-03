@@ -47,7 +47,7 @@ function FridgePage() {
                     <FridgeRecipeSearch setFrigdeHandler={setFridge}/>
                 </section>
 
-                {error && <><div className={styles["kitchen-names"]}><p className="error">No recipes found, please try again</p></div></> }
+                {error && <><div><p>Geen recepten gevonden. Probeer het opnieuw.</p></div></> }
 
 
 

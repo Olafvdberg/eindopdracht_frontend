@@ -53,7 +53,7 @@ function ChooseCuisine() {
                     <CousineSearch setCuisineSearchHandler={setCuisine}/>
                 </section>
                 {error && <>
-                    <div><p>No recipes found, try again</p></div>
+                    <div><p>Geen recepten gevonden. Probeer opnieuw.</p></div>
                 </>}
 
                 {cuisineData && <>

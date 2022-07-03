@@ -72,7 +72,7 @@ function LoginPage() {
                 <button type="submit" className={styles["button"]}>Login</button>
             </form>
 
-            <p>Heeft u geen account? <Link to="/signup">Signup</Link> Dan.</p>
+            <p>Heeft u geen account? <Link to="/signup">Signup</Link> dan.</p>
 
         </>
 
